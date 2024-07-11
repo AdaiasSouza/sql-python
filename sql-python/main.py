@@ -1,16 +1,20 @@
 from config import database_info
-from conecta_db import ConectaBancoDeDados
+from conecta_db import ConectaMySQL
 
 
 def execute_db():
 
-    c = ConectaBancoDeDados(database_info['host'],
-                            database_info['login_id'],
-                            database_info['password']
-                            )
+    c = ConectaMySQL(database_info['host'],
+                     database_info['login_id'],
+                     database_info['password']
+                     )
 
     print(c.conecta())
     print()
+    # c.list_databases()
+    print()
+    # print(c.list_tables('smart_menu'))
+    c.create_database('db_test')
     print(c.desconecta())
 
 
